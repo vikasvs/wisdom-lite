@@ -1,4 +1,4 @@
-from wisdom import db, _update_db
+from __init__ import db, _update_db
 import random
 from .secretsauce import *
 

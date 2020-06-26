@@ -16,4 +16,4 @@ def _update_db(obj):
     return obj
 
 
-from wisdom import routes, models
+import routes, models

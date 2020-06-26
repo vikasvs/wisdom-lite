@@ -1,5 +1,5 @@
 from flask import request
-from wisdom import app, _update_db
+from __init__ import app, _update_db
 from .models import User
 from twilio.twiml.messaging_response import MessagingResponse
 from wisdom import db, _update_db
