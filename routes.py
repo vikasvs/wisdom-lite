@@ -1,7 +1,12 @@
 from flask import request
-from __init__ import app, _update_db
-from models import User
+from wisdom import app, _update_db
+from .models import User
 from twilio.twiml.messaging_response import MessagingResponse
+from wisdom import db, _update_db
+from sqlalchemy import func
+
+def _count_db():
+	return db.session.query(User.phone_number).count()
 
 def _send_message(output_lines):
     resp = MessagingResponse()
@@ -46,6 +51,7 @@ def bot():
 		if incoming_msg == "start":
 			new_user = User(remote_number)
 			_update_db(new_user)
+			add_user(remote_number)
 			output_lines.append(
 				f"Account successfully created for number {remote_number}!"
 			)
@@ -198,8 +204,15 @@ def bot():
 		output_lines.append('vikasvsharma.com')
 		return _send_message(output_lines) 
 
+	if "usercount" in incoming_msg:
+		output_lines.append(str(_count_db()) + " current users")
+		return _send_message(output_lines) 
+ 
+
+
 	output_lines.append("Sorry, I don't understand, please try again or text 'options'.")
 	return _send_message(output_lines)
+
 
 if __name__ == "__main__":
     app.run()

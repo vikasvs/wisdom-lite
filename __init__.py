@@ -1,7 +1,8 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy, Pagination
 from flask_migrate import Migrate
-from config import Config
+from .config import Config
+from sqlalchemy import func
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -14,4 +15,5 @@ def _update_db(obj):
     db.session.commit()
     return obj
 
-import routes, models
+
+from wisdom import routes, models

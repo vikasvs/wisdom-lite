@@ -1,6 +1,7 @@
-from __init__ import db, _update_db
+from wisdom import db, _update_db
 import random
-# from secretsauce import *
+from .secretsauce import *
+
 
 class User(db.Model):
     __tablename__ = "users"
@@ -37,17 +38,17 @@ class User(db.Model):
         recurring = []
 
 
-    # def load(self):
-    #     for r in roastBank:
-    #         self.roasts.append(r)
-    #     for q in quoteBank:
-    #         self.quotes.append(q)
-    #     for e in excuseBank:
-    #         self.excuses.append(e)
-    #     for c in complimentBank:
-    #         self.compliments.append(c)
-    #     _update_db(self)
-    #     return True
+    def load(self):
+        for r in roastBank:
+            self.roasts.append(r)
+        for q in quoteBank:
+            self.quotes.append(q)
+        for e in excuseBank:
+            self.excuses.append(e)
+        for c in complimentBank:
+            self.compliments.append(c)
+        _update_db(self)
+        return True
 
     #roasts
     def add_roast(self, msg):
@@ -153,3 +154,4 @@ class User(db.Model):
             self.recurring.remove(msg)
             _update_db(self)
         return "removed"
+
