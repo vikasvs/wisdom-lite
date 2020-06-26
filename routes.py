@@ -2,7 +2,7 @@ from flask import request
 from __init__ import app, _update_db
 from models import User
 from twilio.twiml.messaging_response import MessagingResponse
-from wisdom import db, _update_db
+import db, _update_db
 from sqlalchemy import func
 
 def _count_db():
