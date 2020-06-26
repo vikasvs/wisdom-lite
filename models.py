@@ -1,6 +1,6 @@
 from __init__ import db, _update_db
 import random
-from .secretsauce import *
+from secretsauce import *
 
 
 class User(db.Model):

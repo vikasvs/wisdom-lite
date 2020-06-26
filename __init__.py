@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy, Pagination
 from flask_migrate import Migrate
-from .config import Config
+from config import Config
 from sqlalchemy import func
 
 app = Flask(__name__)
