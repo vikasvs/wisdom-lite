@@ -1,8 +1,16 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy, Pagination
+from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import Config
-from sqlalchemy import func
+import os
+
+# Load environment variables from .env file if it exists (not in testing)
+if not os.environ.get('TESTING'):
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+    except ImportError:
+        pass
 
 app = Flask(__name__)
 app.config.from_object(Config)

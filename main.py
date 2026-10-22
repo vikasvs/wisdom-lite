@@ -1,12 +1,11 @@
-import wisdomgenerator
+"""
+Wisdom-lite - A personalized SMS bot powered by Flask and Twilio
 
-import secretsauce
-from twilio.rest import Client
+This script is used for testing purposes only.
+For production, use the WSGI application from __init__.py
+"""
 
-account_sid = secretsauce.ACCOUNT_SID
-auth_token = secretsauce.AUTH_TOKEN
-client = Client(account_sid, auth_token)
+from __init__ import app
 
-
-
-wisdomgenerator.send(client)
+if __name__ == "__main__":
+    app.run()
